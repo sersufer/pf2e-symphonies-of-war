@@ -1,0 +1,155 @@
+/* Symphonies of War — PF2e sheet integration */
+.actor.sheet section.window-content form.crb-style .sheet-body .sheet-content .tab.actions ol.actions-list li.action button.sow-action-button,
+.actor.sheet.attack-popout section.window-content .tab.actions ol.actions-list li.action button.sow-action-button {
+  align-items: center;
+  border-radius: 2px;
+  border: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex: 0;
+  font: 500 var(--font-size-10) var(--sans-serif);
+  gap: 0.25em;
+  height: 2em;
+  justify-content: space-evenly;
+  letter-spacing: 0.05em;
+  margin: 0;
+  max-width: fit-content;
+  padding: 0.5em;
+  text-rendering: optimizeLegibility;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.actor.sheet section.window-content form.crb-style .sheet-body .sheet-content .tab.actions ol.actions-list li.action button.sow-action-button:not(:disabled),
+.actor.sheet.attack-popout section.window-content .tab.actions ol.actions-list li.action button.sow-action-button:not(:disabled) {
+  background: var(--bg-dark);
+  cursor: pointer;
+}
+
+.actor.sheet section.window-content form.crb-style .sheet-body .sheet-content .tab.actions ol.actions-list li.action button.sow-action-button:not(:disabled):hover,
+.actor.sheet.attack-popout section.window-content .tab.actions ol.actions-list li.action button.sow-action-button:not(:disabled):hover {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), inset 0 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.actor.sheet section.window-content form.crb-style .sheet-body .sheet-content .tab.actions ol.actions-list li.action button.sow-action-button:not(:disabled):active,
+.actor.sheet.attack-popout section.window-content .tab.actions ol.actions-list li.action button.sow-action-button:not(:disabled):active {
+  color: var(--color-pf-primary);
+}
+
+/* Icon manager */
+.sow-icon-manager {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.sow-icon-manager__header p {
+  margin: 0 0 0.4rem;
+}
+
+.sow-icon-manager__list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.sow-icon-row {
+  display: grid;
+  grid-template-columns: 3rem minmax(12rem, 1fr) minmax(16rem, 1.6fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid var(--color-border-light-2, #777);
+  border-radius: 4px;
+  padding: 0.35rem;
+}
+
+.sow-icon-row[hidden] {
+  display: none;
+}
+
+.sow-icon-row__preview {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border: 1px solid var(--color-border-dark, #222);
+  border-radius: 3px;
+}
+
+.sow-icon-row__identity {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sow-icon-row__identity span {
+  opacity: 0.75;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sow-icon-row__path {
+  width: 100%;
+}
+
+.sow-icon-row__controls,
+.sow-icon-manager__footer {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.sow-icon-row__controls button {
+  width: auto;
+  white-space: nowrap;
+}
+
+.sow-icon-manager__footer {
+  justify-content: flex-end;
+  border-top: 1px solid var(--color-border-light-2, #777);
+  padding-top: 0.65rem;
+}
+
+@media (max-width: 850px) {
+  .sow-icon-row {
+    grid-template-columns: 3rem 1fr;
+  }
+
+  .sow-icon-row__path,
+  .sow-icon-row__controls {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Generated rules text: preserve visible paragraph spacing in PF2e sheets/chat. */
+.sow-rule-block {
+  margin-top: 0.75em !important;
+}
+
+.sow-action-option {
+  margin-top: 0.65em !important;
+}
+
+/* PF2e normal Ability items only store a fixed 1/2/3 action count. Variable-cost
+   SoW activities keep the minimum numeric value internally and expose the
+   published cost with the same compact action glyph convention used by PF2e. */
+.sow-variable-action-cost {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 0.65em !important;
+}
+
+.sow-variable-action-cost-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-left: 0.4em;
+  white-space: nowrap;
+  opacity: 0.85;
+}

@@ -1,0 +1,35 @@
+<form class="sow-icon-manager" autocomplete="off">
+  <header class="sow-icon-manager__header">
+    <p>Choose existing Foundry, PF2e, module, or User Data images. You can also upload an image to this module's persistent local storage for testing.</p>
+    <p><strong>World overrides are local to this Foundry world.</strong> Export the manifest and bundle custom files under <code>assets/icons</code> before distributing the module.</p>
+    <div class="form-group">
+      <label for="sow-icon-search">Filter</label>
+      <input id="sow-icon-search" type="search" placeholder="Search by name, slug, pack, or type">
+    </div>
+  </header>
+
+  <section class="sow-icon-manager__list">
+    {{#each entries}}
+      <article class="sow-icon-row" data-icon-key="{{key}}" data-search="{{search}}" data-pack="{{pack}}" data-slug="{{slug}}">
+        <img class="sow-icon-row__preview" src="{{displayIcon}}" alt="{{name}}" loading="lazy">
+        <div class="sow-icon-row__identity">
+          <strong>{{name}}</strong>
+          <span>{{packLabel}} · {{type}} · {{slug}}</span>
+        </div>
+        <input class="sow-icon-row__path" type="text" value="{{override}}" placeholder="{{bundledIcon}}" aria-label="Icon path for {{name}}">
+        <div class="sow-icon-row__controls">
+          <button type="button" data-action="browse-icon" title="Choose an existing image"><i class="fa-solid fa-folder-open"></i> Browse</button>
+          <button type="button" data-action="upload-icon" title="Upload to local package storage"><i class="fa-solid fa-upload"></i> Upload</button>
+          <button type="button" data-action="clear-icon" title="Use the bundled icon"><i class="fa-solid fa-rotate-left"></i> Clear</button>
+        </div>
+      </article>
+    {{/each}}
+  </section>
+
+  <footer class="sow-icon-manager__footer">
+    <button type="button" data-action="save-icons"><i class="fa-solid fa-floppy-disk"></i> Save and Apply</button>
+    <button type="button" data-action="reload-bundled-icons"><i class="fa-solid fa-arrows-rotate"></i> Reload Bundled Map</button>
+    <button type="button" data-action="clear-world-overrides"><i class="fa-solid fa-broom"></i> Clear World Overrides</button>
+    <button type="button" data-action="export-icons"><i class="fa-solid fa-file-export"></i> Export Manifest</button>
+  </footer>
+</form>

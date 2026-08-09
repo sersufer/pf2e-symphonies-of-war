@@ -1,0 +1,9 @@
+node_modules/
+External_GPT_UPDATES/
+docs/
+tools/
+src/
+packs/*/LOCK
+packs/*/LOG.old
+*.tmp
+.DS_Store

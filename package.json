@@ -1,0 +1,12 @@
+{
+  "name": "pf2e-symphonies-of-war",
+  "version": "0.6.34",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/generate-packs.mjs",
+    "validate:packs": "node tools/validate-packs.mjs",
+    "validate:runtime": "node tools/validate-runtime.mjs",
+    "check": "npm run validate:runtime && npm run validate:packs"
+  }
+}

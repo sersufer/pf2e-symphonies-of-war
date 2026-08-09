@@ -1,0 +1,251 @@
+{
+  "id": "pf2e-symphonies-of-war",
+  "title": "PF2e: Symphonies of War",
+  "description": "Foundry VTT implementation of the Virtuoso class and Symphonies of War content for Pathfinder Second Edition.",
+  "version": "0.6.36",
+  "compatibility": {
+    "minimum": "13.351",
+    "verified": "13.351",
+    "maximum": "13"
+  },
+  "authors": [
+    {
+      "name": "Arturo \"Artuman\" García"
+    },
+    {
+      "name": "Sergio \"Sersurfer\" Suñén",
+      "url": "https://github.com/sersufer"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "7.12.0",
+          "verified": "7.12.2"
+        },
+        "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json"
+      }
+    ],
+    "recommends": [
+      {
+        "id": "pf2e-animal-companions",
+        "type": "module"
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/module.mjs"
+  ],
+  "styles": [
+    "styles/symphonies-of-war.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "flags": {
+    "pf2e-symphonies-of-war": {
+      "pf2e-homebrew": {
+        "weaponTraits": {
+          "acoustic-wind": {
+            "label": "Acoustic (Wind)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          },
+          "acoustic-string": {
+            "label": "Acoustic (String)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          },
+          "acoustic-percussion": {
+            "label": "Acoustic (Percussion)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          }
+        },
+        "shieldTraits": {
+          "acoustic-wind": {
+            "label": "Acoustic (Wind)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          },
+          "acoustic-string": {
+            "label": "Acoustic (String)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          },
+          "acoustic-percussion": {
+            "label": "Acoustic (Percussion)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          }
+        },
+        "equipmentTraits": {
+          "acoustic-wind": {
+            "label": "Acoustic (Wind)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          },
+          "acoustic-string": {
+            "label": "Acoustic (String)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          },
+          "acoustic-percussion": {
+            "label": "Acoustic (Percussion)",
+            "description": "Weapons and shields with this trait are masterfully crafted to double as musical instruments. Every acoustic item specifies its instrument category: Percussion, String, or Wind. You can use an acoustic item as a handheld musical instrument. If a feature or ability requires you to hold a musical instrument, wielding an acoustic item in the required number of hands satisfies this requirement. If a shield with the acoustic trait has an attached weapon, that weapon also gains the same acoustic trait as the shield."
+          }
+        }
+      }
+    }
+  },
+  "packs": [
+    {
+      "name": "sow-journals",
+      "label": "SoW Journals",
+      "type": "JournalEntry",
+      "path": "packs/sow-journals",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-feats",
+      "label": "SoW Feats",
+      "type": "Item",
+      "path": "packs/sow-feats",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-actions",
+      "label": "SoW Actions",
+      "type": "Item",
+      "path": "packs/sow-actions",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-backgrounds",
+      "label": "SoW Backgrounds",
+      "type": "Item",
+      "path": "packs/sow-backgrounds",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-class-features",
+      "label": "SoW Class Features",
+      "type": "Item",
+      "path": "packs/sow-class-features",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-classes",
+      "label": "SoW Classes",
+      "type": "Item",
+      "path": "packs/sow-classes",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-companions",
+      "label": "SoW Companions",
+      "type": "Item",
+      "path": "packs/sow-companions",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-equipment",
+      "label": "SoW Equipment",
+      "type": "Item",
+      "path": "packs/sow-equipment",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-effects",
+      "label": "SoW Effects",
+      "type": "Item",
+      "path": "packs/sow-effects",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "sow-companion-effects",
+      "label": "SoW Companion Effects",
+      "type": "Item",
+      "path": "packs/sow-companion-effects",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Symphonies of War",
+      "sorting": "m",
+      "packs": [
+        "sow-journals"
+      ],
+      "folders": [
+        {
+          "name": "Character Building",
+          "sorting": "m",
+          "packs": [
+            "sow-actions",
+            "sow-backgrounds",
+            "sow-class-features",
+            "sow-classes",
+            "sow-companions",
+            "sow-equipment",
+            "sow-feats"
+          ]
+        },
+        {
+          "name": "Effects",
+          "sorting": "m",
+          "packs": [
+            "sow-companion-effects",
+            "sow-effects"
+          ]
+        }
+      ]
+    }
+  ],
+  "socket": true,
+  "url": "https://github.com/sersufer/pf2e-symphonies-of-war",
+  "manifest": "https://github.com/sersufer/pf2e-symphonies-of-war/releases/latest/download/module.json",
+  "download": "https://github.com/sersufer/pf2e-symphonies-of-war/releases/download/v0.6.36/pf2e-symphonies-of-war.zip",
+  "readme": "https://github.com/sersufer/pf2e-symphonies-of-war/blob/main/README.md",
+  "bugs": "https://github.com/sersufer/pf2e-symphonies-of-war/issues",
+  "changelog": "https://github.com/sersufer/pf2e-symphonies-of-war/blob/main/CHANGELOG.md"
+}
