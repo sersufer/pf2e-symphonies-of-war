@@ -1290,7 +1290,7 @@ const DESCRIPTION_REFRESH_0627_SLUGS = new Set([
   "soothing-crescendo", "vibrating-crescendo", "vitalizing-strike", "whirling-crescendo",
   "battle-tempo", "quickening-tempo", "pass-the-beat", "virtuoso-weapon-expertise", "battle-overture",
   "dynamic-composition", "harmonic-focus", "advanced-composition", "greater-momentum", "momentum",
-  "symphonic-composition", "dissonant-intent", "peerless-momentum", "unending-resonance", "crescendo-strike",
+  "symphonic-composition", "dissonant-intent", "peerless-momentum", "unending-resonance", "crescendo-strike", "parrying-tempo",
   "the-captivating-solo", "the-clashing-duet", "the-echoing-rondo", "the-mending-hymn", "the-vigorous-march",
 ]);
 
@@ -2946,14 +2946,17 @@ async function finalizeOpeningNote(actor, note, { rerolled = false } = {}) {
   if (rerolled) ui.notifications.info(`Technical Precision selected ${NOTES[note].name}.`);
 }
 
-function guidingNoteEligibleAllies(actor) {
+function guidingNoteNearbyAllies(actor) {
   return (canvas?.tokens?.placeables ?? []).filter((token) =>
     token.actor
     && !sameActorIdentity(token.actor, actor)
     && !isEnemy(actor, token.actor)
     && actorDistance(actor, token.actor) <= 30
-    && !token.actor.hasCondition?.("deafened")
   );
+}
+
+function guidingNoteEligibleAllies(actor) {
+  return guidingNoteNearbyAllies(actor).filter((token) => !token.actor.hasCondition?.("deafened"));
 }
 
 async function promptGuidingNoteAlly(actor, allies) {
@@ -3086,8 +3089,13 @@ async function beginGuidingNote(actor) {
   if (!hasBattleTempo(actor)) return post(actor, "Guiding Note", "<p>You must be in Battle Tempo.</p>");
   if (current.openingNote !== 3) return post(actor, "Guiding Note", "<p>Your Opening Note is not Supporting Harmony.</p>");
   if (current.completed) return post(actor, "Guiding Note", "<p>You have already completed this Opening Note.</p>");
-  const allies = guidingNoteEligibleAllies(actor);
-  if (!allies.length) return post(actor, "Guiding Note", "<p>No ally who can hear you is within 30 feet.</p>");
+  const nearbyAllies = guidingNoteNearbyAllies(actor);
+  const allies = nearbyAllies.filter((token) => !token.actor.hasCondition?.("deafened"));
+  if (!nearbyAllies.length) {
+    await gainCombo(actor, 1, { complete: true, reason: "Guiding Note satisfies Supporting Harmony; no allies are within 30 feet." });
+    return post(actor, "Guiding Note", "<p>No allies are within 30 feet. You can Step instead.</p>");
+  }
+  if (!allies.length) return post(actor, "Guiding Note", "<p>All allies within 30 feet are unable to hear you, so none can be chosen for Guiding Note.</p>");
 
   const selectedActorId = await promptGuidingNoteAlly(actor, allies);
   if (selectedActorId) return chooseGuidingNoteAlly(actor, selectedActorId);

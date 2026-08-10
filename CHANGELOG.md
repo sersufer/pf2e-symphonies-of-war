@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.6.37
+
+- Rebuilt the SoW Journals compendium from the latest Foundry exports supplied for the main Symphonies of War journal and SoW Traits.
+- Added the SoW Tips, Credits and Changelog journal to the module.
+- Verified the main journal contains all six published backgrounds, the full equipment page, archetypes, and general/skill feats.
+- Rebuilt and validated the revised Guiding Note text and the requested document links for Crescendo Strike, Shattering Crescendo, Whirling Crescendo, Ricochet Tempo, Vitalizing Strike, Parrying Tempo, and Vibrating Crescendo.
+- Added journal/link validation so stale or incomplete journal packs fail the build before release.
+
+## 0.6.36
+
+- Added a production Foundry VTT manifest for GitHub installation and automatic updates.
+- Added the stable release-manifest URL and version-specific download URL for `sersufer/pf2e-symphonies-of-war`.
+- Added repository, readme, changelog, and issue-tracker metadata.
+- Declared `socket: true`, matching the module's `module.pf2e-symphonies-of-war` socket traffic.
+- Pinned Foundry compatibility to the actually tested V13 build, 13.351.
+- Added an explicit PF2e system manifest while retaining PF2e 7.12.x compatibility metadata.
+- Added manifest validation and a GitHub Actions release workflow that publishes the exact assets Foundry expects.
+
+## 0.6.35
+
+- Updated Guiding Note wording and added the no-allies self-Step fallback to its level 1 runtime flow.
+- Added missing PF2e document links to Crescendo Strike, Shattering Crescendo, Whirling Crescendo, Ricochet Tempo, Vitalizing Strike, Parrying Tempo, and Vibrating Crescendo.
+- Replaced the bundled main journal with the latest supplied seven-page export and added the supplied SoW Traits journal.
+- Audited all 47 archetype feat links in the journal against the generated SoW Feats pack, correcting Marching Troupe and Attuned Companion.
+
 ## 0.6.34
 
 - Added direct PF2e and Symphonies of War document links across the Virtuoso class features and actions identified during journal formatting.

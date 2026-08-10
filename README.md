@@ -8,7 +8,7 @@ The module is designed to feel as close as possible to native PF2e content. Clas
 
 - **Foundry VTT:** 13
 - **Pathfinder Second Edition:** 7.12.x
-- **Current module version:** 0.6.36
+- **Current module version:** 0.6.37
 
 ## Installation
 
@@ -81,7 +81,11 @@ The **SoW Backgrounds** compendium contains the backgrounds from the supplement 
 
 ### Journals
 
-The **SoW Journals** compendium contains an in-Foundry reference for the module content, including the Virtuoso class, feats, archetypes, equipment, companions, backgrounds, and custom traits.
+The **SoW Journals** compendium contains three in-Foundry references:
+
+- **Symphonies of War**, covering the Virtuoso class, backgrounds, companions, equipment, archetypes, and feats.
+- **SoW Traits**, covering Finale, Upbeat, and Acoustic.
+- **SoW Tips, Credits and Changelog**, containing play advice, credits, and supplement update notes.
 
 Where possible, names inside the journals link directly to the corresponding Foundry document or official PF2e action.
 
