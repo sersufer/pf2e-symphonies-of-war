@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.38
+
+- Fixed consecutive Battle Tempo rolls that produced the same Opening Note sometimes rendering without the new note text in chat.
+- Every Opening Note roll now receives a unique per-turn instance identifier in both the chat message and the Opening Note effect, forcing Foundry/chat renderers to treat repeated results as a new note event without changing the visible presentation.
+
 ## 0.6.37
 
 - Rebuilt the SoW Journals compendium from the latest Foundry exports supplied for the main Symphonies of War journal and SoW Traits.

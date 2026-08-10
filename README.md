@@ -8,7 +8,7 @@ The module is designed to feel as close as possible to native PF2e content. Clas
 
 - **Foundry VTT:** 13
 - **Pathfinder Second Edition:** 7.12.x
-- **Current module version:** 0.6.37
+- **Current module version:** 0.6.38
 
 ## Installation
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "moduleVersion": "0.6.36",
+  "moduleVersion": "0.6.38",
   "instructions": "Edit any value with a Foundry-relative image path. The module applies this file at startup and during build; use Reload Bundled Map in the Icon Manager after editing it while Foundry is running.",
   "icons": {
     "sow-actions.abrupt-tempo": "systems/pf2e/icons/actions/Reaction.webp",

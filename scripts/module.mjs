@@ -1237,6 +1237,7 @@ function state(actor) {
     completed: !!data.completed,
     preserveReset: !!data.preserveReset,
     openingNote: Number(data.openingNote ?? 0),
+    openingNoteInstance: data.openingNoteInstance ?? null,
     satisfiedNotes: data.satisfiedNotes ?? {},
     battleOvertureCombat: data.battleOvertureCombat ?? null,
     rhythmRecoveryUsedDay: data.rhythmRecoveryUsedDay ?? null,
@@ -1635,10 +1636,12 @@ async function syncFinaleDamageDice(actor) {
 
 async function syncOpeningEffect(actor, note = state(actor).openingNote) {
   if (!note) return;
+  const current = state(actor);
   const effect = await ensureEffect(actor, EFFECT_UUIDS.openingNote, "effect-opening-note");
   await effect.update({
     "system.badge.value": Number(note),
     "system.description.value": `<p><strong>${NOTES[note].name}</strong></p><p>${noteText(actor, note)}</p><p><em>The module watches this turn for matching PF2e actions, checks, and conditions.</em></p>`,
+    [`flags.${MODULE_ID}.openingNoteInstance`]: current.openingNoteInstance ?? null,
   });
 }
 
@@ -1666,12 +1669,14 @@ async function post(actor, title, body, options = {}) {
 
 async function rollOpeningNote(actor) {
   await ensureBattleTempo(actor);
+  const openingNoteInstance = `${currentTurnKey()}:${foundry.utils.randomID(8)}`;
   const roll = await new Roll("1d6").evaluate();
   let note = Number(roll.total);
   let rerolled = false;
   await roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
-    flavor: `<strong>Opening Note: ${NOTES[note].name}</strong><br>${noteText(actor, note)}<br><em>Monitoring actions and conditions this turn.</em>`,
+    flavor: `<section class="sow-opening-note-flavor" data-sow-opening-note-instance="${escapeHtml(openingNoteInstance)}"><strong>Opening Note: ${NOTES[note].name}</strong><br>${noteText(actor, note)}<br><em>Monitoring actions and conditions this turn.</em></section>`,
+    flags: { [MODULE_ID]: { actorUuid: actor.uuid, openingNote: note, openingNoteInstance } },
   });
   const precision = await technicalPrecisionChoice(actor);
   if (precision === note) {
@@ -1689,7 +1694,7 @@ async function rollOpeningNote(actor) {
       await second.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: `<strong>Technical Precision reroll: ${NOTES[note].name}</strong><br>${noteText(actor, note)}` });
     }
   }
-  await finalizeOpeningNote(actor, note, { rerolled });
+  await finalizeOpeningNote(actor, note, { rerolled, openingNoteInstance });
 }
 
 async function startBattleTempo(actor, { announce = false, force = false } = {}) {
@@ -2211,7 +2216,7 @@ async function onCombatEnd(combat) {
       await setState(actor, { retainedUntil, preserveReset: false, completed: false, passTheBeatAllyUuid: null, passTheBeatAllyId: null, passTheBeatTurnKey: null, passTheBeatProgress: null, heroicCadenceLocked: false, heroicCadenceUsedTurnKey: null });
       await post(actor, "Unending Resonance", `<p>Your <strong>${current.chains} Combo Chain${current.chains > 1 ? "s" : ""}</strong> will persist until <strong>${new Date(retainedUntil).toLocaleTimeString()}</strong>.</p>`);
     } else if (current.chains > 0 || current.openingNote || current.passTheBeatAllyUuid || current.passTheBeatAllyId) {
-      await setState(actor, { chains: 0, openingNote: 0, completed: false, preserveReset: false, passTheBeatAllyUuid: null, passTheBeatAllyId: null, passTheBeatTurnKey: null, passTheBeatProgress: null, retainedUntil: 0, satisfiedNotes: {}, delayPending: false, delayRound: 0, delayCombatId: null, heroicCadenceLocked: false, heroicCadenceUsedTurnKey: null });
+      await setState(actor, { chains: 0, openingNote: 0, openingNoteInstance: null, completed: false, preserveReset: false, passTheBeatAllyUuid: null, passTheBeatAllyId: null, passTheBeatTurnKey: null, passTheBeatProgress: null, retainedUntil: 0, satisfiedNotes: {}, delayPending: false, delayRound: 0, delayCombatId: null, heroicCadenceLocked: false, heroicCadenceUsedTurnKey: null });
     }
   }
 }
@@ -2940,8 +2945,13 @@ async function technicalPrecisionChoice(actor) {
   return technicalPrecisionSelection(feat);
 }
 
-async function finalizeOpeningNote(actor, note, { rerolled = false } = {}) {
-  await setState(actor, { openingNote: note, completed: false, preserveReset: false });
+async function finalizeOpeningNote(actor, note, { rerolled = false, openingNoteInstance = null } = {}) {
+  await setState(actor, {
+    openingNote: note,
+    openingNoteInstance: openingNoteInstance ?? `${currentTurnKey()}:${foundry.utils.randomID(8)}`,
+    completed: false,
+    preserveReset: false,
+  });
   if (isEchoingRondo(actor) && [1, 4].includes(note)) await offerRicochetManeuver(actor, note);
   if (rerolled) ui.notifications.info(`Technical Precision selected ${NOTES[note].name}.`);
 }
