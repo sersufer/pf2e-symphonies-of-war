@@ -2,11 +2,11 @@
   "id": "pf2e-symphonies-of-war",
   "title": "PF2e: Symphonies of War",
   "description": "Foundry VTT implementation of the Virtuoso class and Symphonies of War content for Pathfinder Second Edition.",
-  "version": "0.6.38",
+  "version": "0.6.39",
   "compatibility": {
     "minimum": "13.351",
     "verified": "13.351",
-    "maximum": "13"
+    "maximum": "14"
   },
   "authors": [
     {
